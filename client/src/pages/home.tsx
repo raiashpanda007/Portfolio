@@ -2,15 +2,57 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { ArrowRight, Github, Linkedin, Mail, Phone, ChevronDown, Menu, Rocket, TrendingUp } from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import {
+  ArrowRight,
+  Github,
+  Linkedin,
+  Mail,
+  Phone,
+  ChevronDown,
+  Menu,
+  Rocket,
+  TrendingUp,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
-import { 
-  SiDocker, SiKubernetes, SiNginx, SiAmazon, SiCloudflare, SiGithubactions, SiTerraform, SiPrometheus, SiGrafana, SiLinux, SiRedis,
-  SiPython, SiJavascript, SiTypescript, SiGo, SiReact, SiNodedotjs, SiDjango, SiPostgresql, SiMongodb, SiGraphql, SiPrisma, SiExpress, SiNextdotjs, SiTailwindcss,
-  SiOpenai, SiTensorflow, SiPytorch, SiHuggingface, SiLangchain
+import {
+  SiDocker,
+  SiKubernetes,
+  SiNginx,
+  SiAmazon,
+  SiCloudflare,
+  SiGithubactions,
+  SiTerraform,
+  SiPrometheus,
+  SiGrafana,
+  SiLinux,
+  SiRedis,
+  SiPython,
+  SiJavascript,
+  SiTypescript,
+  SiGo,
+  SiReact,
+  SiNodedotjs,
+  SiDjango,
+  SiPostgresql,
+  SiMongodb,
+  SiGraphql,
+  SiPrisma,
+  SiExpress,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiOpenai,
+  SiLangchain,
 } from "react-icons/si";
+import { AiOutlineApi } from "react-icons/ai";
+import { TbRobot } from "react-icons/tb";
+import { FaVectorSquare } from "react-icons/fa";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -42,13 +84,15 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "bg-background/80 backdrop-blur-md border-b" : "bg-transparent"
+          scrolled
+            ? "bg-background/80 backdrop-blur-md border-b"
+            : "bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="font-bold text-xl">Ashwin Rai</div>
-            
+
             <nav className="hidden md:flex items-center gap-8">
               <button
                 onClick={() => scrollToSection("experience")}
@@ -91,12 +135,18 @@ export default function Home() {
 
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild className="md:hidden">
-                <Button variant="ghost" size="icon" data-testid="button-mobile-menu">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  data-testid="button-mobile-menu"
+                >
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-64">
-                <SheetTitle className="text-xl font-bold mb-2">Navigation</SheetTitle>
+                <SheetTitle className="text-xl font-bold mb-2">
+                  Navigation
+                </SheetTitle>
                 <nav className="flex flex-col gap-6 mt-8">
                   <button
                     onClick={() => scrollToSection("experience")}
@@ -147,24 +197,36 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5 pointer-events-none" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(139,92,246,0.12),transparent_50%)] pointer-events-none" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(168,85,247,0.08),transparent_50%)] pointer-events-none" />
-        
+
         <div className="max-w-7xl mx-auto w-full relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-center lg:text-left space-y-8">
               <div className="space-y-4">
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-tight" data-testid="text-hero-title">
-                  Software Engineer,<br />
+                <h1
+                  className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-tight"
+                  data-testid="text-hero-title"
+                >
+                  Software Engineer,
+                  <br />
                   DevOps & GenAI
                 </h1>
-                <p className="text-xl sm:text-2xl text-muted-foreground font-mono" data-testid="text-hero-metrics">
-                  900+ commits • 99.99% uptime • 2,000+ users impacted
+                <p
+                  className="text-xl sm:text-2xl text-muted-foreground font-mono"
+                  data-testid="text-hero-metrics"
+                >
+                  900+ commits • 99% uptime • 2,000+ users impacted
                 </p>
               </div>
 
-              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed" data-testid="text-hero-description">
-                Building scalable systems with GoLang and cloud-native infrastructure at IIIT Bhagalpur.
-                Specialized in DevOps automation, GenAI integration, and full-stack development with a track record of
-                reducing latency, automating workflows, and deploying products used by thousands.
+              <p
+                className="text-lg sm:text-xl text-muted-foreground leading-relaxed"
+                data-testid="text-hero-description"
+              >
+                Building scalable systems with GoLang and cloud-native
+                infrastructure at IIIT Bhagalpur. Specialized in DevOps
+                automation, GenAI integration, and full-stack development with a
+                track record of reducing latency, automating workflows, and
+                deploying products used by thousands.
               </p>
 
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
@@ -176,7 +238,10 @@ export default function Home() {
                 >
                   View Projects <ArrowRight className="w-4 h-4" />
                 </Button>
-                <a href="mailto:ashwin.2201098cs@iiitbh.ac.in" data-testid="button-contact-me">
+                <a
+                  href="mailto:ashwin.2201098cs@iiitbh.ac.in"
+                  data-testid="button-contact-me"
+                >
                   <Button size="lg" variant="outline">
                     Contact Me
                   </Button>
@@ -221,12 +286,17 @@ export default function Home() {
         id="experience"
         ref={experienceAnim.ref}
         className={`py-20 md:py-32 px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${
-          experienceAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          experienceAnim.isVisible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-8"
         }`}
       >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4" data-testid="text-experience-title">
+            <h2
+              className="text-4xl md:text-5xl font-bold mb-4"
+              data-testid="text-experience-title"
+            >
               Professional Experience
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -235,12 +305,17 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <Card className="p-8 hover-elevate transition-all duration-300" data-testid="card-experience-weecom">
+            <Card
+              className="p-8 hover-elevate transition-all duration-300"
+              data-testid="card-experience-weecom"
+            >
               <div className="space-y-4">
                 <div className="flex items-start justify-between gap-4 flex-wrap">
                   <div>
                     <h3 className="text-2xl font-semibold">Weecom</h3>
-                    <p className="text-lg text-muted-foreground">Backend Developer Intern</p>
+                    <p className="text-lg text-muted-foreground">
+                      Backend Developer Intern
+                    </p>
                   </div>
                   <Badge variant="secondary" className="text-sm">
                     June 2025 – Sep 2025
@@ -250,25 +325,34 @@ export default function Home() {
                   <li className="flex gap-3">
                     <span className="text-primary mt-1.5">•</span>
                     <span>
-                      Collaborated on an internal tool with <strong>Django REST Framework</strong>, automating
-                      invoice, onboarding and reporting workflows to reduce manual effort by{" "}
-                      <strong className="text-foreground">40%</strong> across company operations
+                      Collaborated on an internal tool with{" "}
+                      <strong>Django REST Framework</strong>, automating
+                      invoice, onboarding and reporting workflows to reduce
+                      manual effort by{" "}
+                      <strong className="text-foreground">40%</strong> across
+                      company operations
                     </span>
                   </li>
                   <li className="flex gap-3">
                     <span className="text-primary mt-1.5">•</span>
                     <span>
-                      Integrated <strong>Celery</strong> for resilient background processing (PDF generation,
-                      email/SMS notifications, retry logic), handling{" "}
-                      <strong className="text-foreground">300+ daily tasks</strong> and improving throughput
-                      under peak load
+                      Integrated <strong>Celery</strong> for resilient
+                      background processing (PDF generation, email/SMS
+                      notifications, retry logic), handling{" "}
+                      <strong className="text-foreground">
+                        300+ daily tasks
+                      </strong>{" "}
+                      and improving throughput under peak load
                     </span>
                   </li>
                 </ul>
               </div>
             </Card>
 
-            <Card className="p-8 hover-elevate transition-all duration-300" data-testid="card-experience-jorte">
+            <Card
+              className="p-8 hover-elevate transition-all duration-300"
+              data-testid="card-experience-jorte"
+            >
               <div className="space-y-4">
                 <div className="flex items-start justify-between gap-4 flex-wrap">
                   <div>
@@ -283,17 +367,22 @@ export default function Home() {
                   <li className="flex gap-3">
                     <span className="text-primary mt-1.5">•</span>
                     <span>
-                      Reduced API latency by <strong className="text-foreground">17%</strong> through{" "}
-                      <strong>Redis caching</strong>, query refactors and paginated endpoints for user-facing
-                      search and data-heavy routes during load tests
+                      Reduced API latency by{" "}
+                      <strong className="text-foreground">17%</strong> through{" "}
+                      <strong>Redis caching</strong>, query refactors and
+                      paginated endpoints for user-facing search and data-heavy
+                      routes during load tests
                     </span>
                   </li>
                   <li className="flex gap-3">
                     <span className="text-primary mt-1.5">•</span>
                     <span>
                       Launched a career-counseling service used by{" "}
-                      <strong className="text-foreground">8,000+ students</strong>, adding scheduled mailers,
-                      activity tracking and A/B experiments to boost engagement and response rates
+                      <strong className="text-foreground">
+                        8,000+ students
+                      </strong>
+                      , adding scheduled mailers, activity tracking and A/B
+                      experiments to boost engagement and response rates
                     </span>
                   </li>
                 </ul>
@@ -307,28 +396,39 @@ export default function Home() {
         id="projects"
         ref={projectsAnim.ref}
         className={`py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-muted/30 transition-all duration-1000 ${
-          projectsAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          projectsAnim.isVisible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-8"
         }`}
       >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4" data-testid="text-projects-title">
+            <h2
+              className="text-4xl md:text-5xl font-bold mb-4"
+              data-testid="text-projects-title"
+            >
               Featured Projects
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Building scalable solutions from cloud IDEs to real-time multiplayer platforms
+              Building scalable solutions from cloud IDEs to real-time
+              multiplayer platforms
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="p-8 hover-elevate transition-all duration-300 flex flex-col overflow-hidden relative group" data-testid="card-project-devzen">
+            <Card
+              className="p-8 hover-elevate transition-all duration-300 flex flex-col overflow-hidden relative group"
+              data-testid="card-project-devzen"
+            >
               <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500" />
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-              
+
               <div className="space-y-4 flex-1 relative">
                 <div>
                   <h3 className="text-2xl font-semibold mb-2">DevZEN</h3>
-                  <p className="text-sm text-muted-foreground">March 2025 – August 2025</p>
+                  <p className="text-sm text-muted-foreground">
+                    March 2025 – August 2025
+                  </p>
                 </div>
 
                 <div className="flex flex-wrap gap-2">
@@ -341,18 +441,39 @@ export default function Home() {
 
                 <div className="space-y-3 text-sm leading-relaxed">
                   <p>
-                    Built a cloud collaborative IDE enabling concurrent editing across{" "}
-                    <strong className="text-foreground">50+ active projects</strong> with low-latency sync
+                    Built a cloud collaborative IDE enabling concurrent editing
+                    across{" "}
+                    <strong className="text-foreground">
+                      50+ active projects
+                    </strong>{" "}
+                    with low-latency sync
                   </p>
                   <p>
-                    Designed Kubernetes deployment with isolated pods, autoscaling workers achieving{" "}
-                    <strong className="text-foreground">1.2s cold-starts</strong> and{" "}
-                    <strong className="text-foreground">30% lower infra cost</strong>
+                    Designed Kubernetes deployment with isolated pods,
+                    autoscaling workers achieving{" "}
+                    <strong className="text-foreground">
+                      1.2s cold-starts
+                    </strong>{" "}
+                    and{" "}
+                    <strong className="text-foreground">
+                      30% lower infra cost
+                    </strong>
                   </p>
                 </div>
               </div>
 
               <div className="flex gap-2 mt-6 relative">
+                <a
+                  href="https://web.devzen.ashprojects.tech"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1"
+                  data-testid="link-devzen-live"
+                >
+                  <Button size="sm" className="w-full gap-2">
+                    <ArrowRight className="w-4 h-4" /> Live Demo
+                  </Button>
+                </a>
                 <a
                   href="https://github.com/ashwinrai"
                   target="_blank"
@@ -367,14 +488,19 @@ export default function Home() {
               </div>
             </Card>
 
-            <Card className="p-8 hover-elevate transition-all duration-300 flex flex-col overflow-hidden relative group" data-testid="card-project-chess">
+            <Card
+              className="p-8 hover-elevate transition-all duration-300 flex flex-col overflow-hidden relative group"
+              data-testid="card-project-chess"
+            >
               <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-green-500 via-teal-500 to-cyan-500" />
               <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-              
+
               <div className="space-y-4 flex-1 relative">
                 <div>
                   <h3 className="text-2xl font-semibold mb-2">Chess-Royale</h3>
-                  <p className="text-sm text-muted-foreground">December 2024 – January 2025</p>
+                  <p className="text-sm text-muted-foreground">
+                    December 2024 – January 2025
+                  </p>
                 </div>
 
                 <div className="flex flex-wrap gap-2">
@@ -386,19 +512,37 @@ export default function Home() {
 
                 <div className="space-y-3 text-sm leading-relaxed">
                   <p>
-                    Created a real-time multiplayer chess platform with WebSockets supporting{" "}
-                    <strong className="text-foreground">300+ participants</strong> and{" "}
+                    Created a real-time multiplayer chess platform with
+                    WebSockets supporting{" "}
+                    <strong className="text-foreground">
+                      300+ participants
+                    </strong>{" "}
+                    and{" "}
                     <strong className="text-foreground">1,000+ matches</strong>
                   </p>
                   <p>
                     Deployed via CI/CD and Nginx on AWS EC2 maintaining{" "}
-                    <strong className="text-foreground">99.99% uptime</strong> and supporting{" "}
-                    <strong className="text-foreground">500+ concurrent users</strong>
+                    <strong className="text-foreground">99.99% uptime</strong>{" "}
+                    and supporting{" "}
+                    <strong className="text-foreground">
+                      500+ concurrent users
+                    </strong>
                   </p>
                 </div>
               </div>
 
               <div className="flex gap-2 mt-6 relative">
+                <a
+                  href="https://web.chesssroyale.games"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1"
+                  data-testid="link-chess-live"
+                >
+                  <Button size="sm" className="w-full gap-2">
+                    <ArrowRight className="w-4 h-4" /> Live Demo
+                  </Button>
+                </a>
                 <a
                   href="https://github.com/ashwinrai"
                   target="_blank"
@@ -413,40 +557,52 @@ export default function Home() {
               </div>
             </Card>
 
-            <Card className="p-8 hover-elevate transition-all duration-300 flex flex-col overflow-hidden relative group" data-testid="card-project-uniblogic">
+            <Card
+              className="p-8 hover-elevate transition-all duration-300 flex flex-col overflow-hidden relative group"
+              data-testid="card-project-uniblogic"
+            >
               <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-orange-500 via-red-500 to-pink-500" />
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-              
+
               <div className="space-y-4 flex-1 relative">
                 <div>
                   <h3 className="text-2xl font-semibold mb-2">UniBLOGic</h3>
-                  <p className="text-sm text-muted-foreground">July 2024 – November 2024</p>
+                  <p className="text-sm text-muted-foreground">
+                    July 2024 – November 2024
+                  </p>
                 </div>
 
                 <div className="flex flex-wrap gap-2">
                   <Badge variant="secondary">React.js</Badge>
                   <Badge variant="secondary">Node.js</Badge>
                   <Badge variant="secondary">PostgreSQL</Badge>
-                  <Badge variant="secondary">Docker</Badge>
+                  <Badge variant="secondary">ECS and ECR </Badge>
+                  <Badge variant="secondary">SQS</Badge>
+                  <Badge variant="secondary">Lambda Functions</Badge>
                 </div>
 
                 <div className="space-y-3 text-sm leading-relaxed">
                   <p>
-                    Developed a college community platform with real-time chat adopted by{" "}
-                    <strong className="text-foreground">500+ active users</strong> across campus
-                    organizations
+                    Developed a college community platform with real-time chat
+                    adopted by{" "}
+                    <strong className="text-foreground">
+                      500+ active users
+                    </strong>{" "}
+                    across campus organizations
                   </p>
                   <p>
                     Implemented a microservice video pipeline cutting costs by{" "}
-                    <strong className="text-foreground">30%</strong> and improving delivery speed by{" "}
-                    <strong className="text-foreground">25%</strong> for 250+ videos
+                    <strong className="text-foreground">30%</strong> and
+                    improving delivery speed by{" "}
+                    <strong className="text-foreground">25%</strong> for 250+
+                    videos
                   </p>
                 </div>
               </div>
 
               <div className="flex gap-2 mt-6 relative">
                 <a
-                  href="https://github.com/ashwinrai"
+                  href="https://github.com/raiashpanda007"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1"
@@ -465,16 +621,25 @@ export default function Home() {
       <section
         ref={upcomingAnim.ref}
         className={`py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/5 via-background to-accent/5 transition-all duration-1000 ${
-          upcomingAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          upcomingAnim.isVisible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-8"
         }`}
       >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <Badge variant="secondary" className="mb-4 px-4 py-2" data-testid="badge-upcoming">
+            <Badge
+              variant="secondary"
+              className="mb-4 px-4 py-2"
+              data-testid="badge-upcoming"
+            >
               <Rocket className="w-4 h-4 mr-2 inline" />
               Coming Soon
             </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4" data-testid="text-upcoming-title">
+            <h2
+              className="text-4xl md:text-5xl font-bold mb-4"
+              data-testid="text-upcoming-title"
+            >
               Upcoming Project
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -482,10 +647,13 @@ export default function Home() {
             </p>
           </div>
 
-          <Card className="overflow-hidden relative group" data-testid="card-upcoming-project">
+          <Card
+            className="overflow-hidden relative group"
+            data-testid="card-upcoming-project"
+          >
             <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500" />
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-            
+
             <div className="p-8 md:p-12">
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div className="space-y-6">
@@ -495,26 +663,61 @@ export default function Home() {
                     </div>
                     <div>
                       <h3 className="text-3xl font-bold">Sports Exchange</h3>
-                      <p className="text-muted-foreground">Fantasy Sports & Betting Platform</p>
+                      <p className="text-muted-foreground">
+                        Fantasy Sports & Betting Platform
+                      </p>
                     </div>
                   </div>
 
                   <p className="text-lg leading-relaxed text-muted-foreground">
-                    A comprehensive sports exchange platform offering real-time odds, fantasy leagues, 
-                    and secure betting services. Built with cutting-edge technology for seamless 
-                    user experience and enterprise-grade security.
+                    <p>
+                      A next-gen sports exchange where users trade{" "}
+                      <strong>team stocks</strong> and use those same assets to
+                      place bets. Prices move on pure{" "}
+                      <strong>market supply–demand</strong>, letting users earn
+                      from both trading and smart betting decisions.
+                    </p>
+
+                    <p>
+                      The platform is engineered for{" "}
+                      <strong>negligible latency</strong>, real-time updates,
+                      and <strong>zero downtime</strong>. The backend focuses on{" "}
+                      <strong>durability</strong>, <strong>consistency</strong>,
+                      and seamless execution under high concurrency.
+                    </p>
+
+                    <p>
+                      Built with a modern stack optimized for scalability and a
+                      smooth, uninterrupted user experience even during peak
+                      match hours.
+                    </p>
                   </p>
 
                   <div className="flex flex-wrap gap-2">
-                    {["GoLang", "Microservices", "Redis", "WebSockets", "Kafka", "Kubernetes"].map((tech) => (
-                      <Badge key={tech} variant="secondary" className="px-3 py-1">
+                    {[
+                      "GoLang",
+                      "Microservices",
+                      "Redis",
+                      "WebSockets",
+                      "Kafka",
+                      "Kubernetes",
+                    ].map((tech) => (
+                      <Badge
+                        key={tech}
+                        variant="secondary"
+                        className="px-3 py-1"
+                      >
                         {tech}
                       </Badge>
                     ))}
                   </div>
 
                   <div className="flex flex-wrap gap-4 pt-4">
-                    <Button disabled className="gap-2" data-testid="button-sports-exchange">
+                    <Button
+                      disabled
+                      className="gap-2"
+                      data-testid="button-sports-exchange"
+                    >
                       <Rocket className="w-4 h-4" /> In Development
                     </Button>
                     <Button variant="outline" disabled>
@@ -530,7 +733,9 @@ export default function Home() {
                         SE
                       </div>
                       <div className="space-y-1">
-                        <p className="text-sm text-muted-foreground font-medium">Expected Launch</p>
+                        <p className="text-sm text-muted-foreground font-medium">
+                          Expected Launch
+                        </p>
                         <p className="text-xl font-semibold">Q2 2026</p>
                       </div>
                     </div>
@@ -543,13 +748,17 @@ export default function Home() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 pt-8 border-t border-border">
                 {[
                   { label: "Real-time Odds", value: "Live" },
-                  { label: "Sports Covered", value: "10+" },
-                  { label: "Platform", value: "Web & Mobile" },
+                  { label: "Sports Covered", value: "Football" },
+                  { label: "Platform", value: "Web" },
                   { label: "Security", value: "Enterprise" },
                 ].map((stat) => (
                   <div key={stat.label} className="text-center">
-                    <p className="text-2xl font-bold text-primary">{stat.value}</p>
-                    <p className="text-sm text-muted-foreground">{stat.label}</p>
+                    <p className="text-2xl font-bold text-primary">
+                      {stat.value}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      {stat.label}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -562,28 +771,49 @@ export default function Home() {
         id="skills"
         ref={skillsAnim.ref}
         className={`py-20 md:py-32 px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${
-          skillsAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          skillsAnim.isVisible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-8"
         }`}
       >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4" data-testid="text-skills-title">
+            <h2
+              className="text-4xl md:text-5xl font-bold mb-4"
+              data-testid="text-skills-title"
+            >
               Technical Skills
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Expertise across DevOps, Software Engineering, and AI/ML technologies
+              Expertise across DevOps, Software Engineering, and AI/ML
+              technologies
             </p>
           </div>
 
           <Tabs defaultValue="devops" className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mb-8 h-auto" data-testid="skills-tabs">
-              <TabsTrigger value="devops" className="py-3 text-base" data-testid="tab-devops">
+            <TabsList
+              className="grid w-full grid-cols-3 mb-8 h-auto"
+              data-testid="skills-tabs"
+            >
+              <TabsTrigger
+                value="devops"
+                className="py-3 text-base"
+                data-testid="tab-devops"
+              >
                 DevOps
               </TabsTrigger>
-              <TabsTrigger value="software" className="py-3 text-base" data-testid="tab-software">
+              <TabsTrigger
+                value="software"
+                className="py-3 text-base"
+                data-testid="tab-software"
+              >
                 Software Engineer
               </TabsTrigger>
-              <TabsTrigger value="ai" className="py-3 text-base" data-testid="tab-ai">
+              <TabsTrigger
+                value="ai"
+                className="py-3 text-base"
+                data-testid="tab-ai"
+              >
                 AI / GenAI
               </TabsTrigger>
             </TabsList>
@@ -593,23 +823,46 @@ export default function Home() {
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
                   {[
                     { name: "Docker", icon: SiDocker, color: "#2496ED" },
-                    { name: "Kubernetes", icon: SiKubernetes, color: "#326CE5" },
+                    {
+                      name: "Kubernetes",
+                      icon: SiKubernetes,
+                      color: "#326CE5",
+                    },
                     { name: "Nginx", icon: SiNginx, color: "#009639" },
                     { name: "AWS", icon: SiAmazon, color: "#FF9900" },
-                    { name: "Cloudflare", icon: SiCloudflare, color: "#F38020" },
-                    { name: "GitHub Actions", icon: SiGithubactions, color: "#2088FF" },
+                    {
+                      name: "Cloudflare",
+                      icon: SiCloudflare,
+                      color: "#F38020",
+                    },
+                    {
+                      name: "GitHub Actions",
+                      icon: SiGithubactions,
+                      color: "#2088FF",
+                    },
                     { name: "Terraform", icon: SiTerraform, color: "#7B42BC" },
-                    { name: "Prometheus", icon: SiPrometheus, color: "#E6522C" },
+                    {
+                      name: "Prometheus",
+                      icon: SiPrometheus,
+                      color: "#E6522C",
+                    },
                     { name: "Grafana", icon: SiGrafana, color: "#F46800" },
                     { name: "Linux", icon: SiLinux, color: "#FCC624" },
                   ].map((skill) => (
                     <div
                       key={skill.name}
                       className="flex flex-col items-center gap-3 p-4 rounded-lg hover-elevate transition-all duration-200 bg-muted/30"
-                      data-testid={`skill-devops-${skill.name.toLowerCase().replace(/\s/g, '-')}`}
+                      data-testid={`skill-devops-${skill.name
+                        .toLowerCase()
+                        .replace(/\s/g, "-")}`}
                     >
-                      <skill.icon className="w-10 h-10" style={{ color: skill.color }} />
-                      <span className="text-sm font-medium text-center">{skill.name}</span>
+                      <skill.icon
+                        className="w-10 h-10"
+                        style={{ color: skill.color }}
+                      />
+                      <span className="text-sm font-medium text-center">
+                        {skill.name}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -620,54 +873,96 @@ export default function Home() {
               <Card className="p-8">
                 <div className="space-y-8">
                   <div>
-                    <h4 className="text-lg font-semibold mb-4 text-muted-foreground">Languages</h4>
+                    <h4 className="text-lg font-semibold mb-4 text-muted-foreground">
+                      Languages
+                    </h4>
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
                       {[
                         { name: "GoLang", icon: SiGo, color: "#00ADD8" },
                         { name: "Python", icon: SiPython, color: "#3776AB" },
-                        { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
-                        { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+                        {
+                          name: "JavaScript",
+                          icon: SiJavascript,
+                          color: "#F7DF1E",
+                        },
+                        {
+                          name: "TypeScript",
+                          icon: SiTypescript,
+                          color: "#3178C6",
+                        },
                       ].map((skill) => (
                         <div
                           key={skill.name}
                           className="flex flex-col items-center gap-3 p-4 rounded-lg hover-elevate transition-all duration-200 bg-muted/30"
                           data-testid={`skill-lang-${skill.name.toLowerCase()}`}
                         >
-                          <skill.icon className="w-8 h-8" style={{ color: skill.color }} />
-                          <span className="text-sm font-medium">{skill.name}</span>
+                          <skill.icon
+                            className="w-8 h-8"
+                            style={{ color: skill.color }}
+                          />
+                          <span className="text-sm font-medium">
+                            {skill.name}
+                          </span>
                         </div>
                       ))}
                     </div>
                   </div>
 
                   <div>
-                    <h4 className="text-lg font-semibold mb-4 text-muted-foreground">Frameworks & Libraries</h4>
+                    <h4 className="text-lg font-semibold mb-4 text-muted-foreground">
+                      Frameworks & Libraries
+                    </h4>
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
                       {[
                         { name: "React", icon: SiReact, color: "#61DAFB" },
-                        { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
-                        { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
+                        {
+                          name: "Node.js",
+                          icon: SiNodedotjs,
+                          color: "#339933",
+                        },
+                        {
+                          name: "Next.js",
+                          icon: SiNextdotjs,
+                          color: "#000000",
+                        },
                         { name: "Django", icon: SiDjango, color: "#092E20" },
                         { name: "Express", icon: SiExpress, color: "#000000" },
-                        { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4" },
+                        {
+                          name: "Tailwind",
+                          icon: SiTailwindcss,
+                          color: "#06B6D4",
+                        },
                       ].map((skill) => (
                         <div
                           key={skill.name}
                           className="flex flex-col items-center gap-3 p-4 rounded-lg hover-elevate transition-all duration-200 bg-muted/30"
-                          data-testid={`skill-framework-${skill.name.toLowerCase().replace(/\./g, '-')}`}
+                          data-testid={`skill-framework-${skill.name
+                            .toLowerCase()
+                            .replace(/\./g, "-")}`}
                         >
-                          <skill.icon className="w-8 h-8" style={{ color: skill.color }} />
-                          <span className="text-sm font-medium">{skill.name}</span>
+                          <skill.icon
+                            className="w-8 h-8"
+                            style={{ color: skill.color }}
+                          />
+                          <span className="text-sm font-medium">
+                            {skill.name}
+                          </span>
                         </div>
                       ))}
                     </div>
                   </div>
 
                   <div>
-                    <h4 className="text-lg font-semibold mb-4 text-muted-foreground">Databases & APIs</h4>
+                    <h4 className="text-lg font-semibold mb-4 text-muted-foreground">
+                      Databases & APIs
+                    </h4>
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
                       {[
-                        { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+                        {
+                          name: "PostgreSQL",
+                          icon: SiPostgresql,
+                          color: "#4169E1",
+                        },
                         { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
                         { name: "Redis", icon: SiRedis, color: "#DC382D" },
                         { name: "GraphQL", icon: SiGraphql, color: "#E10098" },
@@ -678,8 +973,13 @@ export default function Home() {
                           className="flex flex-col items-center gap-3 p-4 rounded-lg hover-elevate transition-all duration-200 bg-muted/30"
                           data-testid={`skill-db-${skill.name.toLowerCase()}`}
                         >
-                          <skill.icon className="w-8 h-8" style={{ color: skill.color }} />
-                          <span className="text-sm font-medium">{skill.name}</span>
+                          <skill.icon
+                            className="w-8 h-8"
+                            style={{ color: skill.color }}
+                          />
+                          <span className="text-sm font-medium">
+                            {skill.name}
+                          </span>
                         </div>
                       ))}
                     </div>
@@ -694,25 +994,47 @@ export default function Home() {
                   {[
                     { name: "OpenAI", icon: SiOpenai, color: "#412991" },
                     { name: "LangChain", icon: SiLangchain, color: "#1C3C3C" },
-                    { name: "TensorFlow", icon: SiTensorflow, color: "#FF6F00" },
-                    { name: "PyTorch", icon: SiPytorch, color: "#EE4C2C" },
-                    { name: "HuggingFace", icon: SiHuggingface, color: "#FFD21E" },
+                    {
+                      name: "Vector Databases",
+                      icon: FaVectorSquare,
+                      color: "#1C3C3C",
+                    },
+                    {
+                      name: "Model Context Protocol",
+                      icon: AiOutlineApi,
+                      color: "#412991",
+                    },
+                    {
+                      name: "AI Agents",
+                      icon: TbRobot,
+                      color: "#412991",
+                    },
                   ].map((skill) => (
                     <div
                       key={skill.name}
                       className="flex flex-col items-center gap-3 p-4 rounded-lg hover-elevate transition-all duration-200 bg-muted/30"
                       data-testid={`skill-ai-${skill.name.toLowerCase()}`}
                     >
-                      <skill.icon className="w-10 h-10" style={{ color: skill.color }} />
-                      <span className="text-sm font-medium text-center">{skill.name}</span>
+                      <skill.icon
+                        className="w-10 h-10"
+                        style={{ color: skill.color }}
+                      />
+                      <span className="text-sm font-medium text-center">
+                        {skill.name}
+                      </span>
                     </div>
                   ))}
                 </div>
                 <div className="mt-8 p-6 rounded-lg bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20">
                   <p className="text-center text-muted-foreground">
-                    Currently exploring <strong className="text-foreground">RAG architectures</strong>,{" "}
-                    <strong className="text-foreground">AI agents</strong>, and{" "}
-                    <strong className="text-foreground">LLM fine-tuning</strong> for production applications
+                    Currently exploring{" "}
+                    <strong className="text-foreground">
+                      RAG architectures
+                    </strong>
+                    , <strong className="text-foreground">AI agents</strong>,
+                    and{" "}
+                    <strong className="text-foreground">LLM fine-tuning</strong>{" "}
+                    for production applications
                   </p>
                 </div>
               </Card>
@@ -724,16 +1046,22 @@ export default function Home() {
       <section
         ref={leadershipAnim.ref}
         className={`py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-muted/30 transition-all duration-1000 ${
-          leadershipAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          leadershipAnim.isVisible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-8"
         }`}
       >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4" data-testid="text-leadership-title">
+            <h2
+              className="text-4xl md:text-5xl font-bold mb-4"
+              data-testid="text-leadership-title"
+            >
               Leadership & Achievements
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Driving technical excellence and mentoring the next generation of developers
+              Driving technical excellence and mentoring the next generation of
+              developers
             </p>
           </div>
 
@@ -744,15 +1072,19 @@ export default function Home() {
                 <li className="flex gap-3">
                   <span className="text-primary mt-1.5">•</span>
                   <span>
-                    Earned selection to the <strong className="text-foreground">SSB</strong>, demonstrating
-                    exceptional analytical capabilities and decision-making proficiency
+                    Earned selection to the{" "}
+                    <strong className="text-foreground">SSB</strong>,
+                    demonstrating exceptional analytical capabilities and
+                    decision-making proficiency
                   </span>
                 </li>
                 <li className="flex gap-3">
                   <span className="text-primary mt-1.5">•</span>
                   <span>
-                    Achieved <strong className="text-foreground">900+ commits</strong> in under a year,
-                    reflecting consistent dedication to software development excellence
+                    Achieved{" "}
+                    <strong className="text-foreground">900+ commits</strong> in
+                    under a year, reflecting consistent dedication to software
+                    development excellence
                   </span>
                 </li>
               </ul>
@@ -764,8 +1096,12 @@ export default function Home() {
                 <h4 className="text-lg font-semibold">
                   Indian Institute of Information Technology Bhagalpur
                 </h4>
-                <p className="text-muted-foreground">Bachelor of Technology in Computer Science Engineering</p>
-                <p className="text-sm text-muted-foreground">November 2022 – July 2026</p>
+                <p className="text-muted-foreground">
+                  Bachelor of Technology in Computer Science Engineering
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  November 2022 – July 2026
+                </p>
                 <p className="text-sm">
                   CGPA: <strong className="text-foreground">7.16</strong>
                 </p>
@@ -774,63 +1110,89 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <Card className="p-8 relative overflow-hidden" data-testid="card-role-cp-lead">
+            <Card
+              className="p-8 relative overflow-hidden"
+              data-testid="card-role-cp-lead"
+            >
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-primary/50 to-transparent" />
               <div className="space-y-4 pl-4">
                 <div className="relative">
                   <div className="absolute -left-6 top-1 w-3 h-3 rounded-full bg-primary border-4 border-background" />
                   <h3 className="text-xl font-semibold">CP/DSA Lead</h3>
-                  <p className="text-muted-foreground">GFG IIIT-BH Student's Chapter</p>
-                  <p className="text-sm text-muted-foreground">April 2024 – April 2025</p>
+                  <p className="text-muted-foreground">
+                    GFG IIIT-BH Student's Chapter
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    April 2024 – April 2025
+                  </p>
                 </div>
                 <ul className="space-y-3 text-sm leading-relaxed">
                   <li className="flex gap-3">
                     <span className="text-primary mt-1.5">•</span>
                     <span>
-                      Directed mentorship program for <strong className="text-foreground">100+ students</strong>{" "}
+                      Directed mentorship program for{" "}
+                      <strong className="text-foreground">100+ students</strong>{" "}
                       with focused coding exercises and challenges
                     </span>
                   </li>
                   <li className="flex gap-3">
                     <span className="text-primary mt-1.5">•</span>
                     <span>
-                      Curated <strong className="text-foreground">20+ coding problems</strong> and editorials,
-                      increasing engagement by <strong className="text-foreground">20%</strong> and reducing
-                      queries by <strong className="text-foreground">25%</strong>
+                      Curated{" "}
+                      <strong className="text-foreground">
+                        20+ coding problems
+                      </strong>{" "}
+                      and editorials, increasing engagement by{" "}
+                      <strong className="text-foreground">20%</strong> and
+                      reducing queries by{" "}
+                      <strong className="text-foreground">25%</strong>
                     </span>
                   </li>
                 </ul>
               </div>
             </Card>
 
-            <Card className="p-8 relative overflow-hidden" data-testid="card-role-club-lead">
+            <Card
+              className="p-8 relative overflow-hidden"
+              data-testid="card-role-club-lead"
+            >
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-primary/50 to-transparent" />
               <div className="space-y-4 pl-4">
                 <div className="relative">
                   <div className="absolute -left-6 top-1 w-3 h-3 rounded-full bg-primary border-4 border-background" />
                   <h3 className="text-xl font-semibold">Club Lead</h3>
                   <p className="text-muted-foreground">DevC IIIT Bhagalpur</p>
-                  <p className="text-sm text-muted-foreground">January 2024 – January 2025</p>
+                  <p className="text-sm text-muted-foreground">
+                    January 2024 – January 2025
+                  </p>
                 </div>
                 <ul className="space-y-3 text-sm leading-relaxed">
                   <li className="flex gap-3">
                     <span className="text-primary mt-1.5">•</span>
                     <span>
-                      Pioneered college community platform development, integrating CI and CD pipelines that
-                      reduced deployment times by <strong className="text-foreground">40%</strong>
+                      Pioneered college community platform development,
+                      integrating CI and CD pipelines that reduced deployment
+                      times by <strong className="text-foreground">40%</strong>
                     </span>
                   </li>
                   <li className="flex gap-3">
                     <span className="text-primary mt-1.5">•</span>
                     <span>
-                      Organized <strong className="text-foreground">8 tech workshops</strong> on modern tools
-                      with <strong className="text-foreground">300+ cumulative participants</strong>
+                      Organized{" "}
+                      <strong className="text-foreground">
+                        8 tech workshops
+                      </strong>{" "}
+                      on modern tools with{" "}
+                      <strong className="text-foreground">
+                        300+ cumulative participants
+                      </strong>
                     </span>
                   </li>
                   <li className="flex gap-3">
                     <span className="text-primary mt-1.5">•</span>
                     <span>
-                      Modernized college systems by introducing test automation, decreasing bug reports by{" "}
+                      Modernized college systems by introducing test automation,
+                      decreasing bug reports by{" "}
                       <strong className="text-foreground">35%</strong>
                     </span>
                   </li>
@@ -845,16 +1207,21 @@ export default function Home() {
         id="contact"
         ref={contactAnim.ref}
         className={`py-20 md:py-32 px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${
-          contactAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          contactAnim.isVisible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-8"
         }`}
       >
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6" data-testid="text-contact-title">
+          <h2
+            className="text-4xl md:text-5xl font-bold mb-6"
+            data-testid="text-contact-title"
+          >
             Let's Build Something Great Together
           </h2>
           <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
-            I'm always open to discussing new projects, creative ideas, or opportunities to be part of
-            your visions. Feel free to reach out!
+            I'm always open to discussing new projects, creative ideas, or
+            opportunities to be part of your visions. Feel free to reach out!
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
@@ -870,7 +1237,7 @@ export default function Home() {
               </Button>
             </a>
             <a
-              href="https://www.linkedin.com/in/ashwinrai"
+              href="https://www.linkedin.com/in/ashwin-rai-22473a257"
               target="_blank"
               rel="noopener noreferrer"
               data-testid="link-linkedin"
@@ -891,7 +1258,7 @@ export default function Home() {
                 GitHub
               </Button>
             </a>
-            <a href="tel:+919636834457" data-testid="link-phone">
+            <a href="tel:+91 9636834457" data-testid="link-phone">
               <Button size="lg" variant="outline" className="gap-2">
                 <Phone className="w-5 h-5" />
                 Call Me
