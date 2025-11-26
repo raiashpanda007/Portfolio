@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { ArrowRight, Github, Linkedin, Mail, Phone, ChevronDown, Menu } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
@@ -89,6 +89,7 @@ export default function Home() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-64">
+                <SheetTitle className="text-xl font-bold mb-2">Navigation</SheetTitle>
                 <nav className="flex flex-col gap-6 mt-8">
                   <button
                     onClick={() => scrollToSection("experience")}
