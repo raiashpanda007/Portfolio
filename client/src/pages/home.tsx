@@ -1,16 +1,23 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { ArrowRight, Github, Linkedin, Mail, Phone, ChevronDown, Menu } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail, Phone, ChevronDown, Menu, Rocket, TrendingUp } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { 
+  SiDocker, SiKubernetes, SiNginx, SiAmazon, SiCloudflare, SiGithubactions, SiTerraform, SiPrometheus, SiGrafana, SiLinux, SiRedis,
+  SiPython, SiJavascript, SiTypescript, SiGo, SiReact, SiNodedotjs, SiDjango, SiPostgresql, SiMongodb, SiGraphql, SiPrisma, SiExpress, SiNextdotjs, SiTailwindcss,
+  SiOpenai, SiTensorflow, SiPytorch, SiHuggingface, SiLangchain
+} from "react-icons/si";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const experienceAnim = useScrollAnimation();
   const projectsAnim = useScrollAnimation();
+  const upcomingAnim = useScrollAnimation();
   const skillsAnim = useScrollAnimation();
   const leadershipAnim = useScrollAnimation();
   const contactAnim = useScrollAnimation();
@@ -138,26 +145,26 @@ export default function Home() {
 
       <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5 pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(120,119,198,0.1),transparent_50%)] pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(74,158,255,0.08),transparent_50%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(139,92,246,0.12),transparent_50%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(168,85,247,0.08),transparent_50%)] pointer-events-none" />
         
         <div className="max-w-7xl mx-auto w-full relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-center lg:text-left space-y-8">
               <div className="space-y-4">
                 <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-tight" data-testid="text-hero-title">
-                  Backend Engineer &<br />
-                  Full-Stack Developer
+                  Software Engineer,<br />
+                  DevOps & GenAI
                 </h1>
                 <p className="text-xl sm:text-2xl text-muted-foreground font-mono" data-testid="text-hero-metrics">
-                  800+ commits • 99.99% uptime • 8,000+ users impacted
+                  900+ commits • 99.99% uptime • 2,000+ users impacted
                 </p>
               </div>
 
               <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed" data-testid="text-hero-description">
-                Crafting scalable backend systems and leading technical teams at IIIT Bhagalpur.
-                Specialized in Django, Node.js, and cloud infrastructure with a track record of
-                reducing latency, automating workflows, and building products used by thousands.
+                Building scalable systems with GoLang and cloud-native infrastructure at IIIT Bhagalpur.
+                Specialized in DevOps automation, GenAI integration, and full-stack development with a track record of
+                reducing latency, automating workflows, and deploying products used by thousands.
               </p>
 
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
@@ -456,6 +463,102 @@ export default function Home() {
       </section>
 
       <section
+        ref={upcomingAnim.ref}
+        className={`py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/5 via-background to-accent/5 transition-all duration-1000 ${
+          upcomingAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <Badge variant="secondary" className="mb-4 px-4 py-2" data-testid="badge-upcoming">
+              <Rocket className="w-4 h-4 mr-2 inline" />
+              Coming Soon
+            </Badge>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4" data-testid="text-upcoming-title">
+              Upcoming Project
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Building the next generation of sports entertainment
+            </p>
+          </div>
+
+          <Card className="overflow-hidden relative group" data-testid="card-upcoming-project">
+            <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500" />
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+            
+            <div className="p-8 md:p-12">
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div className="space-y-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center">
+                      <TrendingUp className="w-6 h-6 text-primary-foreground" />
+                    </div>
+                    <div>
+                      <h3 className="text-3xl font-bold">Sports Exchange</h3>
+                      <p className="text-muted-foreground">Fantasy Sports & Betting Platform</p>
+                    </div>
+                  </div>
+
+                  <p className="text-lg leading-relaxed text-muted-foreground">
+                    A comprehensive sports exchange platform offering real-time odds, fantasy leagues, 
+                    and secure betting services. Built with cutting-edge technology for seamless 
+                    user experience and enterprise-grade security.
+                  </p>
+
+                  <div className="flex flex-wrap gap-2">
+                    {["GoLang", "Microservices", "Redis", "WebSockets", "Kafka", "Kubernetes"].map((tech) => (
+                      <Badge key={tech} variant="secondary" className="px-3 py-1">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-wrap gap-4 pt-4">
+                    <Button disabled className="gap-2" data-testid="button-sports-exchange">
+                      <Rocket className="w-4 h-4" /> In Development
+                    </Button>
+                    <Button variant="outline" disabled>
+                      Stay Tuned
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="relative">
+                  <div className="aspect-video rounded-xl bg-gradient-to-br from-primary/20 via-primary/10 to-accent/20 flex items-center justify-center border border-primary/10">
+                    <div className="text-center space-y-4 p-8">
+                      <div className="text-6xl font-bold bg-gradient-to-br from-primary to-primary/60 bg-clip-text text-transparent">
+                        SE
+                      </div>
+                      <div className="space-y-1">
+                        <p className="text-sm text-muted-foreground font-medium">Expected Launch</p>
+                        <p className="text-xl font-semibold">Q2 2026</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="absolute -top-4 -right-4 w-24 h-24 rounded-full bg-primary/10 blur-2xl animate-pulse" />
+                  <div className="absolute -bottom-4 -left-4 w-32 h-32 rounded-full bg-accent/10 blur-2xl animate-pulse delay-700" />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 pt-8 border-t border-border">
+                {[
+                  { label: "Real-time Odds", value: "Live" },
+                  { label: "Sports Covered", value: "10+" },
+                  { label: "Platform", value: "Web & Mobile" },
+                  { label: "Security", value: "Enterprise" },
+                ].map((stat) => (
+                  <div key={stat.label} className="text-center">
+                    <p className="text-2xl font-bold text-primary">{stat.value}</p>
+                    <p className="text-sm text-muted-foreground">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Card>
+        </div>
+      </section>
+
+      <section
         id="skills"
         ref={skillsAnim.ref}
         className={`py-20 md:py-32 px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${
@@ -468,76 +571,153 @@ export default function Home() {
               Technical Skills
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Full-stack expertise across modern web technologies and cloud infrastructure
+              Expertise across DevOps, Software Engineering, and AI/ML technologies
             </p>
           </div>
 
-          <div className="space-y-12">
-            <div>
-              <h3 className="text-2xl font-semibold mb-6">Languages</h3>
-              <div className="flex flex-wrap gap-3">
-                {[
-                  "C++",
-                  "Python",
-                  "JavaScript",
-                  "TypeScript",
-                  "CSS",
-                  "HTML",
-                  "SQL",
-                  "YAML",
-                  "GoLang",
-                ].map((skill) => (
-                  <Badge key={skill} variant="secondary" className="px-4 py-2 text-sm" data-testid={`skill-${skill.toLowerCase()}`}>
-                    {skill}
-                  </Badge>
-                ))}
-              </div>
-            </div>
+          <Tabs defaultValue="devops" className="w-full">
+            <TabsList className="grid w-full grid-cols-3 mb-8 h-auto" data-testid="skills-tabs">
+              <TabsTrigger value="devops" className="py-3 text-base" data-testid="tab-devops">
+                DevOps
+              </TabsTrigger>
+              <TabsTrigger value="software" className="py-3 text-base" data-testid="tab-software">
+                Software Engineer
+              </TabsTrigger>
+              <TabsTrigger value="ai" className="py-3 text-base" data-testid="tab-ai">
+                AI / GenAI
+              </TabsTrigger>
+            </TabsList>
 
-            <div>
-              <h3 className="text-2xl font-semibold mb-6">Tools & Platforms</h3>
-              <div className="flex flex-wrap gap-3">
-                {["Git", "GitHub", "AWS", "Cloudflare"].map((skill) => (
-                  <Badge key={skill} variant="secondary" className="px-4 py-2 text-sm" data-testid={`tool-${skill.toLowerCase()}`}>
-                    {skill}
-                  </Badge>
-                ))}
-              </div>
-            </div>
+            <TabsContent value="devops" className="mt-0">
+              <Card className="p-8">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                  {[
+                    { name: "Docker", icon: SiDocker, color: "#2496ED" },
+                    { name: "Kubernetes", icon: SiKubernetes, color: "#326CE5" },
+                    { name: "Nginx", icon: SiNginx, color: "#009639" },
+                    { name: "AWS", icon: SiAmazon, color: "#FF9900" },
+                    { name: "Cloudflare", icon: SiCloudflare, color: "#F38020" },
+                    { name: "GitHub Actions", icon: SiGithubactions, color: "#2088FF" },
+                    { name: "Terraform", icon: SiTerraform, color: "#7B42BC" },
+                    { name: "Prometheus", icon: SiPrometheus, color: "#E6522C" },
+                    { name: "Grafana", icon: SiGrafana, color: "#F46800" },
+                    { name: "Linux", icon: SiLinux, color: "#FCC624" },
+                  ].map((skill) => (
+                    <div
+                      key={skill.name}
+                      className="flex flex-col items-center gap-3 p-4 rounded-lg hover-elevate transition-all duration-200 bg-muted/30"
+                      data-testid={`skill-devops-${skill.name.toLowerCase().replace(/\s/g, '-')}`}
+                    >
+                      <skill.icon className="w-10 h-10" style={{ color: skill.color }} />
+                      <span className="text-sm font-medium text-center">{skill.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            </TabsContent>
 
-            <div>
-              <h3 className="text-2xl font-semibold mb-6">Technologies & Frameworks</h3>
-              <div className="flex flex-wrap gap-3">
-                {[
-                  "React.js",
-                  "Django REST Framework",
-                  "Tailwind",
-                  "Node.js",
-                  "Hono",
-                  "Turborepo",
-                  "Next.js",
-                  "Docker",
-                  "Kubernetes",
-                  "WebSockets",
-                  "Express",
-                  "WebRTC",
-                  "Redis",
-                  "FFmpeg",
-                  "MongoDB",
-                  "Postgres",
-                  "MySQL",
-                  "Prisma",
-                  "gRPC",
-                  "GraphQL",
-                  "MCP",
-                ].map((skill) => (
-                  <Badge key={skill} variant="secondary" className="px-4 py-2 text-sm" data-testid={`tech-${skill.toLowerCase().replace(/\./g, '-')}`}>
-                    {skill}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-          </div>
+            <TabsContent value="software" className="mt-0">
+              <Card className="p-8">
+                <div className="space-y-8">
+                  <div>
+                    <h4 className="text-lg font-semibold mb-4 text-muted-foreground">Languages</h4>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                      {[
+                        { name: "GoLang", icon: SiGo, color: "#00ADD8" },
+                        { name: "Python", icon: SiPython, color: "#3776AB" },
+                        { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+                        { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+                      ].map((skill) => (
+                        <div
+                          key={skill.name}
+                          className="flex flex-col items-center gap-3 p-4 rounded-lg hover-elevate transition-all duration-200 bg-muted/30"
+                          data-testid={`skill-lang-${skill.name.toLowerCase()}`}
+                        >
+                          <skill.icon className="w-8 h-8" style={{ color: skill.color }} />
+                          <span className="text-sm font-medium">{skill.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="text-lg font-semibold mb-4 text-muted-foreground">Frameworks & Libraries</h4>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                      {[
+                        { name: "React", icon: SiReact, color: "#61DAFB" },
+                        { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+                        { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
+                        { name: "Django", icon: SiDjango, color: "#092E20" },
+                        { name: "Express", icon: SiExpress, color: "#000000" },
+                        { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4" },
+                      ].map((skill) => (
+                        <div
+                          key={skill.name}
+                          className="flex flex-col items-center gap-3 p-4 rounded-lg hover-elevate transition-all duration-200 bg-muted/30"
+                          data-testid={`skill-framework-${skill.name.toLowerCase().replace(/\./g, '-')}`}
+                        >
+                          <skill.icon className="w-8 h-8" style={{ color: skill.color }} />
+                          <span className="text-sm font-medium">{skill.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="text-lg font-semibold mb-4 text-muted-foreground">Databases & APIs</h4>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                      {[
+                        { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+                        { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+                        { name: "Redis", icon: SiRedis, color: "#DC382D" },
+                        { name: "GraphQL", icon: SiGraphql, color: "#E10098" },
+                        { name: "Prisma", icon: SiPrisma, color: "#2D3748" },
+                      ].map((skill) => (
+                        <div
+                          key={skill.name}
+                          className="flex flex-col items-center gap-3 p-4 rounded-lg hover-elevate transition-all duration-200 bg-muted/30"
+                          data-testid={`skill-db-${skill.name.toLowerCase()}`}
+                        >
+                          <skill.icon className="w-8 h-8" style={{ color: skill.color }} />
+                          <span className="text-sm font-medium">{skill.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="ai" className="mt-0">
+              <Card className="p-8">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                  {[
+                    { name: "OpenAI", icon: SiOpenai, color: "#412991" },
+                    { name: "LangChain", icon: SiLangchain, color: "#1C3C3C" },
+                    { name: "TensorFlow", icon: SiTensorflow, color: "#FF6F00" },
+                    { name: "PyTorch", icon: SiPytorch, color: "#EE4C2C" },
+                    { name: "HuggingFace", icon: SiHuggingface, color: "#FFD21E" },
+                  ].map((skill) => (
+                    <div
+                      key={skill.name}
+                      className="flex flex-col items-center gap-3 p-4 rounded-lg hover-elevate transition-all duration-200 bg-muted/30"
+                      data-testid={`skill-ai-${skill.name.toLowerCase()}`}
+                    >
+                      <skill.icon className="w-10 h-10" style={{ color: skill.color }} />
+                      <span className="text-sm font-medium text-center">{skill.name}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-8 p-6 rounded-lg bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20">
+                  <p className="text-center text-muted-foreground">
+                    Currently exploring <strong className="text-foreground">RAG architectures</strong>,{" "}
+                    <strong className="text-foreground">AI agents</strong>, and{" "}
+                    <strong className="text-foreground">LLM fine-tuning</strong> for production applications
+                  </p>
+                </div>
+              </Card>
+            </TabsContent>
+          </Tabs>
         </div>
       </section>
 
@@ -571,7 +751,7 @@ export default function Home() {
                 <li className="flex gap-3">
                   <span className="text-primary mt-1.5">•</span>
                   <span>
-                    Achieved <strong className="text-foreground">800+ commits</strong> in under a year,
+                    Achieved <strong className="text-foreground">900+ commits</strong> in under a year,
                     reflecting consistent dedication to software development excellence
                   </span>
                 </li>
