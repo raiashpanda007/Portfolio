@@ -1,7 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   Sheet,
   SheetContent,
@@ -18,6 +24,8 @@ import {
   Menu,
   Rocket,
   TrendingUp,
+  ExternalLink,
+  Sparkles,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
@@ -49,6 +57,8 @@ import {
   SiTailwindcss,
   SiOpenai,
   SiLangchain,
+  SiCplusplus,
+  SiC,
 } from "react-icons/si";
 import { AiOutlineApi } from "react-icons/ai";
 import { TbRobot } from "react-icons/tb";
@@ -57,6 +67,7 @@ import { FaVectorSquare } from "react-icons/fa";
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSkillCategory, setActiveSkillCategory] = useState("devops");
   const experienceAnim = useScrollAnimation();
   const projectsAnim = useScrollAnimation();
   const upcomingAnim = useScrollAnimation();
@@ -81,54 +92,43 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative noise-overlay">
+      {/* Floating gradient orbs - riverline style */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-gradient-to-br from-primary/20 via-purple-500/10 to-transparent rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-violet-500/15 via-fuchsia-500/10 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-br from-purple-600/5 to-transparent rounded-full blur-3xl" />
+      </div>
+
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-background/80 backdrop-blur-md border-b"
-            : "bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+          ? "glass shadow-lg"
+          : "bg-transparent"
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="font-bold text-xl">Ashwin Rai</div>
+            <div className="font-bold text-xl gradient-text">Ashwin Rai</div>
 
             <nav className="hidden md:flex items-center gap-8">
-              <button
-                onClick={() => scrollToSection("experience")}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                data-testid="link-experience"
-              >
-                Experience
-              </button>
-              <button
-                onClick={() => scrollToSection("projects")}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                data-testid="link-projects"
-              >
-                Projects
-              </button>
-              <button
-                onClick={() => scrollToSection("skills")}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                data-testid="link-skills"
-              >
-                Skills
-              </button>
-              <button
-                onClick={() => scrollToSection("contact")}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                data-testid="link-contact"
-              >
-                Contact
-              </button>
+              {["experience", "projects", "skills", "contact"].map((item) => (
+                <button
+                  key={item}
+                  onClick={() => scrollToSection(item)}
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors link-underline capitalize"
+                  data-testid={`link-${item}`}
+                >
+                  {item}
+                </button>
+              ))}
               <a
                 href="/attached_assets/ASHWIN_RAI_RESUME_1764173357171.pdf"
                 download
                 data-testid="button-download-resume"
               >
-                <Button variant="outline" size="sm">
-                  Download Resume
+                <Button variant="outline" size="sm" className="gap-2">
+                  <ExternalLink className="w-4 h-4" />
+                  Resume
                 </Button>
               </a>
             </nav>
@@ -143,39 +143,21 @@ export default function Home() {
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-64">
-                <SheetTitle className="text-xl font-bold mb-2">
+              <SheetContent side="right" className="w-64 glass">
+                <SheetTitle className="text-xl font-bold mb-2 gradient-text">
                   Navigation
                 </SheetTitle>
                 <nav className="flex flex-col gap-6 mt-8">
-                  <button
-                    onClick={() => scrollToSection("experience")}
-                    className="text-left text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
-                    data-testid="mobile-link-experience"
-                  >
-                    Experience
-                  </button>
-                  <button
-                    onClick={() => scrollToSection("projects")}
-                    className="text-left text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
-                    data-testid="mobile-link-projects"
-                  >
-                    Projects
-                  </button>
-                  <button
-                    onClick={() => scrollToSection("skills")}
-                    className="text-left text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
-                    data-testid="mobile-link-skills"
-                  >
-                    Skills
-                  </button>
-                  <button
-                    onClick={() => scrollToSection("contact")}
-                    className="text-left text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
-                    data-testid="mobile-link-contact"
-                  >
-                    Contact
-                  </button>
+                  {["experience", "projects", "skills", "contact"].map((item) => (
+                    <button
+                      key={item}
+                      onClick={() => scrollToSection(item)}
+                      className="text-left text-base font-medium text-muted-foreground hover:text-foreground transition-colors capitalize"
+                      data-testid={`mobile-link-${item}`}
+                    >
+                      {item}
+                    </button>
+                  ))}
                   <a
                     href="/attached_assets/ASHWIN_RAI_RESUME_1764173357171.pdf"
                     download
@@ -193,89 +175,107 @@ export default function Home() {
         </div>
       </header>
 
+      {/* Hero Section - Riverline inspired */}
       <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5 pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(139,92,246,0.12),transparent_50%)] pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(168,85,247,0.08),transparent_50%)] pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto w-full relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-center lg:text-left space-y-8">
-              <div className="space-y-4">
-                <h1
-                  className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-tight"
-                  data-testid="text-hero-title"
-                >
-                  Software Engineer,
-                  <br />
-                  DevOps & GenAI
-                </h1>
-                <p
-                  className="text-xl sm:text-2xl text-muted-foreground font-mono"
-                  data-testid="text-hero-metrics"
-                >
-                  900+ commits • 99% uptime • 2,000+ users impacted
-                </p>
-              </div>
-
-              <p
-                className="text-lg sm:text-xl text-muted-foreground leading-relaxed"
-                data-testid="text-hero-description"
-              >
-                Building scalable systems with GoLang and cloud-native
-                infrastructure at IIIT Bhagalpur. Specialized in DevOps
-                automation, GenAI integration, and full-stack development with a
-                track record of reducing latency, automating workflows, and
-                deploying products used by thousands.
-              </p>
-
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
-                <Button
-                  size="lg"
-                  onClick={() => scrollToSection("projects")}
-                  className="gap-2"
-                  data-testid="button-view-projects"
-                >
-                  View Projects <ArrowRight className="w-4 h-4" />
-                </Button>
-                <a
-                  href="mailto:ashwin.2201098cs@iiitbh.ac.in"
-                  data-testid="button-contact-me"
-                >
-                  <Button size="lg" variant="outline">
-                    Contact Me
-                  </Button>
-                </a>
-              </div>
+        <div className="max-w-6xl mx-auto w-full relative z-10">
+          <div className="text-center space-y-8">
+            {/* Subtle badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/20">
+              <Sparkles className="w-4 h-4 text-primary" />
+              <span className="text-sm font-medium text-muted-foreground">
+                Available for opportunities
+              </span>
             </div>
 
-            <div className="flex items-center justify-center lg:justify-end">
-              <div className="relative">
-                <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-gradient-to-br from-primary/20 via-primary/10 to-accent/20 flex items-center justify-center backdrop-blur-sm border border-primary/10">
-                  <div className="w-56 h-56 sm:w-72 sm:h-72 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center">
-                    <div className="text-center space-y-2 p-8">
-                      <div className="text-6xl sm:text-7xl font-bold bg-gradient-to-br from-primary to-primary/60 bg-clip-text text-transparent">
-                        AR
-                      </div>
-                      <div className="text-sm text-muted-foreground font-medium">
-                        Building at scale
-                      </div>
-                    </div>
+            {/* Main headline */}
+            <div className="space-y-4">
+              <h1
+                className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.1]"
+                data-testid="text-hero-title"
+              >
+                <span className="gradient-text">Software Engineer</span>
+                <br />
+                <span className="text-foreground/90">DevOps & GenAI</span>
+              </h1>
+            </div>
+
+            {/* Metrics - prominent display */}
+            <div className="flex flex-wrap items-center justify-center gap-8 py-6">
+              {[
+                { value: "900+", label: "Commits" },
+                { value: "99%", label: "Uptime" },
+                { value: "2,000+", label: "Users Impacted" },
+              ].map((metric, index) => (
+                <div key={index} className="text-center">
+                  <div className="metric-number text-4xl sm:text-5xl gradient-text">
+                    {metric.value}
+                  </div>
+                  <div className="text-sm text-muted-foreground mt-1">
+                    {metric.label}
                   </div>
                 </div>
-                <div className="absolute -top-4 -right-4 w-24 h-24 rounded-full bg-primary/10 blur-2xl animate-pulse" />
-                <div className="absolute -bottom-4 -left-4 w-32 h-32 rounded-full bg-accent/10 blur-2xl animate-pulse delay-700" />
-              </div>
+              ))}
+            </div>
+
+            {/* Description */}
+            <p
+              className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto"
+              data-testid="text-hero-description"
+            >
+              GoLang and Node.js dev building scalable systems with cloud-native infrastructure.
+              Specialized in DevOps automation, GenAI integration, and full-stack
+              development with a track record of reducing latency and deploying
+              products used by thousands.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
+              <Button
+                size="lg"
+                onClick={() => scrollToSection("projects")}
+                className="gap-2 glow-primary"
+                data-testid="button-view-projects"
+              >
+                View Projects <ArrowRight className="w-4 h-4" />
+              </Button>
+              <a
+                href="mailto:ashwin.2201098cs@iiitbh.ac.in"
+                data-testid="button-contact-me"
+              >
+                <Button size="lg" variant="outline" className="gap-2">
+                  Get in Touch
+                </Button>
+              </a>
+            </div>
+
+            {/* Social Links */}
+            <div className="flex items-center justify-center gap-4 pt-8">
+              {[
+                { icon: Github, href: "https://github.com/raiashpanda007", label: "GitHub" },
+                { icon: Linkedin, href: "https://www.linkedin.com/in/ashwin-rai-22473a257", label: "LinkedIn" },
+                { icon: Mail, href: "mailto:ashwin.2201098cs@iiitbh.ac.in", label: "Email" },
+              ].map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full glass hover:bg-primary/10 transition-colors"
+                >
+                  <social.icon className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors" />
+                </a>
+              ))}
             </div>
           </div>
 
-          <div className="text-center mt-16">
+          {/* Scroll indicator */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
             <button
               onClick={() => scrollToSection("experience")}
-              className="inline-flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors animate-bounce"
+              className="flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors animate-bounce"
               data-testid="button-scroll-down"
             >
-              <span className="text-sm">Scroll to explore</span>
+              <span className="text-sm">Explore</span>
               <ChevronDown className="w-5 h-5" />
             </button>
           </div>
@@ -285,11 +285,10 @@ export default function Home() {
       <section
         id="experience"
         ref={experienceAnim.ref}
-        className={`py-20 md:py-32 px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${
-          experienceAnim.isVisible
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-8"
-        }`}
+        className={`py-20 md:py-32 px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${experienceAnim.isVisible
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-8"
+          }`}
       >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -395,11 +394,10 @@ export default function Home() {
       <section
         id="projects"
         ref={projectsAnim.ref}
-        className={`py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-muted/30 transition-all duration-1000 ${
-          projectsAnim.isVisible
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-8"
-        }`}
+        className={`py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-muted/30 transition-all duration-1000 ${projectsAnim.isVisible
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-8"
+          }`}
       >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -620,11 +618,10 @@ export default function Home() {
 
       <section
         ref={upcomingAnim.ref}
-        className={`py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/5 via-background to-accent/5 transition-all duration-1000 ${
-          upcomingAnim.isVisible
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-8"
-        }`}
+        className={`py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/5 via-background to-accent/5 transition-all duration-1000 ${upcomingAnim.isVisible
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-8"
+          }`}
       >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -770,11 +767,10 @@ export default function Home() {
       <section
         id="skills"
         ref={skillsAnim.ref}
-        className={`py-20 md:py-32 px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${
-          skillsAnim.isVisible
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-8"
-        }`}
+        className={`py-20 md:py-32 px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${skillsAnim.isVisible
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-8"
+          }`}
       >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -790,266 +786,265 @@ export default function Home() {
             </p>
           </div>
 
-          <Tabs defaultValue="devops" className="w-full">
-            <TabsList
-              className="grid w-full grid-cols-3 mb-8 h-auto"
-              data-testid="skills-tabs"
+          <div className="flex justify-center mb-12">
+            <Select
+              value={activeSkillCategory}
+              onValueChange={setActiveSkillCategory}
             >
-              <TabsTrigger
-                value="devops"
-                className="py-3 text-base"
-                data-testid="tab-devops"
-              >
-                DevOps
-              </TabsTrigger>
-              <TabsTrigger
-                value="software"
-                className="py-3 text-base"
-                data-testid="tab-software"
-              >
-                Software Engineer
-              </TabsTrigger>
-              <TabsTrigger
-                value="ai"
-                className="py-3 text-base"
-                data-testid="tab-ai"
-              >
-                AI / GenAI
-              </TabsTrigger>
-            </TabsList>
+              <SelectTrigger className="w-[280px] h-14 glass text-lg font-medium border-primary/20 focus:ring-primary/50">
+                <SelectValue placeholder="Select Technology" />
+              </SelectTrigger>
+              <SelectContent className="glass border-primary/20">
+                <SelectItem value="devops" className="text-base py-3 cursor-pointer">DevOps & Cloud</SelectItem>
+                <SelectItem value="software" className="text-base py-3 cursor-pointer">Software Engineering</SelectItem>
+                <SelectItem value="ai" className="text-base py-3 cursor-pointer">AI & GenAI</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
 
-            <TabsContent value="devops" className="mt-0">
-              <Card className="p-8">
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                  {[
-                    { name: "Docker", icon: SiDocker, color: "#2496ED" },
-                    {
-                      name: "Kubernetes",
-                      icon: SiKubernetes,
-                      color: "#326CE5",
-                    },
-                    { name: "Nginx", icon: SiNginx, color: "#009639" },
-                    { name: "AWS", icon: SiAmazon, color: "#FF9900" },
-                    {
-                      name: "Cloudflare",
-                      icon: SiCloudflare,
-                      color: "#F38020",
-                    },
-                    {
-                      name: "GitHub Actions",
-                      icon: SiGithubactions,
-                      color: "#2088FF",
-                    },
-                    { name: "Terraform", icon: SiTerraform, color: "#7B42BC" },
-                    {
-                      name: "Prometheus",
-                      icon: SiPrometheus,
-                      color: "#E6522C",
-                    },
-                    { name: "Grafana", icon: SiGrafana, color: "#F46800" },
-                    { name: "Linux", icon: SiLinux, color: "#FCC624" },
-                  ].map((skill) => (
-                    <div
-                      key={skill.name}
-                      className="flex flex-col items-center gap-3 p-4 rounded-lg hover-elevate transition-all duration-200 bg-muted/30"
-                      data-testid={`skill-devops-${skill.name
-                        .toLowerCase()
-                        .replace(/\s/g, "-")}`}
-                    >
-                      <skill.icon
-                        className="w-10 h-10"
-                        style={{ color: skill.color }}
-                      />
-                      <span className="text-sm font-medium text-center">
-                        {skill.name}
-                      </span>
+          <div className="min-h-[400px] transition-all duration-500 ease-in-out">
+            {activeSkillCategory === "devops" && (
+              <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <Card className="p-8 glass border-primary/10">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                    {[
+                      { name: "Docker", icon: SiDocker, color: "#2496ED" },
+                      {
+                        name: "Kubernetes",
+                        icon: SiKubernetes,
+                        color: "#326CE5",
+                      },
+                      { name: "Nginx", icon: SiNginx, color: "#009639" },
+                      { name: "AWS", icon: SiAmazon, color: "#FF9900" },
+                      {
+                        name: "Cloudflare",
+                        icon: SiCloudflare,
+                        color: "#F38020",
+                      },
+                      {
+                        name: "GitHub Actions",
+                        icon: SiGithubactions,
+                        color: "#2088FF",
+                      },
+                      { name: "Terraform", icon: SiTerraform, color: "#7B42BC" },
+                      {
+                        name: "Prometheus",
+                        icon: SiPrometheus,
+                        color: "#E6522C",
+                      },
+                      { name: "Grafana", icon: SiGrafana, color: "#F46800" },
+                      { name: "Linux", icon: SiLinux, color: "#FCC624" },
+                    ].map((skill) => (
+                      <div
+                        key={skill.name}
+                        className="flex flex-col items-center gap-3 p-4 rounded-lg hover-elevate transition-all duration-200 bg-muted/30 hover:bg-primary/10 border border-transparent hover:border-primary/20"
+                        data-testid={`skill-devops-${skill.name
+                          .toLowerCase()
+                          .replace(/\s/g, "-")}`}
+                      >
+                        <skill.icon
+                          className="w-10 h-10"
+                          style={{ color: skill.color }}
+                        />
+                        <span className="text-sm font-medium text-center">
+                          {skill.name}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </Card>
+              </div>
+            )}
+
+            {activeSkillCategory === "software" && (
+              <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <Card className="p-8 glass border-primary/10">
+                  <div className="space-y-12">
+                    <div>
+                      <h4 className="text-xl font-semibold mb-6 text-muted-foreground flex items-center gap-2">
+                        <span className="w-1 h-6 bg-primary rounded-full"></span>
+                        Languages
+                      </h4>
+                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                        {[
+                          { name: "GoLang", icon: SiGo, color: "#00ADD8" },
+                          { name: "C++", icon: SiCplusplus, color: "#00599C" },
+                          { name: "C", icon: SiC, color: "#A8B9CC" },
+                          { name: "Python", icon: SiPython, color: "#3776AB" },
+                          {
+                            name: "JavaScript",
+                            icon: SiJavascript,
+                            color: "#F7DF1E",
+                          },
+                          {
+                            name: "TypeScript",
+                            icon: SiTypescript,
+                            color: "#3178C6",
+                          },
+                        ].map((skill) => (
+                          <div
+                            key={skill.name}
+                            className="flex flex-col items-center gap-3 p-4 rounded-lg hover-elevate transition-all duration-200 bg-muted/30 hover:bg-primary/10 border border-transparent hover:border-primary/20"
+                            data-testid={`skill-lang-${skill.name.toLowerCase()}`}
+                          >
+                            <skill.icon
+                              className="w-8 h-8"
+                              style={{ color: skill.color }}
+                            />
+                            <span className="text-sm font-medium">
+                              {skill.name}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  ))}
-                </div>
-              </Card>
-            </TabsContent>
 
-            <TabsContent value="software" className="mt-0">
-              <Card className="p-8">
-                <div className="space-y-8">
-                  <div>
-                    <h4 className="text-lg font-semibold mb-4 text-muted-foreground">
-                      Languages
-                    </h4>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                      {[
-                        { name: "GoLang", icon: SiGo, color: "#00ADD8" },
-                        { name: "Python", icon: SiPython, color: "#3776AB" },
-                        {
-                          name: "JavaScript",
-                          icon: SiJavascript,
-                          color: "#F7DF1E",
-                        },
-                        {
-                          name: "TypeScript",
-                          icon: SiTypescript,
-                          color: "#3178C6",
-                        },
-                      ].map((skill) => (
-                        <div
-                          key={skill.name}
-                          className="flex flex-col items-center gap-3 p-4 rounded-lg hover-elevate transition-all duration-200 bg-muted/30"
-                          data-testid={`skill-lang-${skill.name.toLowerCase()}`}
-                        >
-                          <skill.icon
-                            className="w-8 h-8"
-                            style={{ color: skill.color }}
-                          />
-                          <span className="text-sm font-medium">
-                            {skill.name}
-                          </span>
-                        </div>
-                      ))}
+                    <div>
+                      <h4 className="text-xl font-semibold mb-6 text-muted-foreground flex items-center gap-2">
+                        <span className="w-1 h-6 bg-primary rounded-full"></span>
+                        Frameworks & Libraries
+                      </h4>
+                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                        {[
+                          { name: "React", icon: SiReact, color: "#61DAFB" },
+                          {
+                            name: "Node.js",
+                            icon: SiNodedotjs,
+                            color: "#339933",
+                          },
+                          {
+                            name: "Next.js",
+                            icon: SiNextdotjs,
+                            color: "#000000",
+                          },
+                          { name: "Django", icon: SiDjango, color: "#092E20" },
+                          { name: "Express", icon: SiExpress, color: "#000000" },
+                          {
+                            name: "Tailwind",
+                            icon: SiTailwindcss,
+                            color: "#06B6D4",
+                          },
+                        ].map((skill) => (
+                          <div
+                            key={skill.name}
+                            className="flex flex-col items-center gap-3 p-4 rounded-lg hover-elevate transition-all duration-200 bg-muted/30 hover:bg-primary/10 border border-transparent hover:border-primary/20"
+                            data-testid={`skill-framework-${skill.name
+                              .toLowerCase()
+                              .replace(/\./g, "-")}`}
+                          >
+                            <skill.icon
+                              className="w-8 h-8"
+                              style={{ color: skill.color }}
+                            />
+                            <span className="text-sm font-medium">
+                              {skill.name}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="text-xl font-semibold mb-6 text-muted-foreground flex items-center gap-2">
+                        <span className="w-1 h-6 bg-primary rounded-full"></span>
+                        Databases & APIs
+                      </h4>
+                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                        {[
+                          {
+                            name: "PostgreSQL",
+                            icon: SiPostgresql,
+                            color: "#4169E1",
+                          },
+                          { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+                          { name: "Redis", icon: SiRedis, color: "#DC382D" },
+                          { name: "GraphQL", icon: SiGraphql, color: "#E10098" },
+                          { name: "Prisma", icon: SiPrisma, color: "#2D3748" },
+                        ].map((skill) => (
+                          <div
+                            key={skill.name}
+                            className="flex flex-col items-center gap-3 p-4 rounded-lg hover-elevate transition-all duration-200 bg-muted/30 hover:bg-primary/10 border border-transparent hover:border-primary/20"
+                            data-testid={`skill-db-${skill.name.toLowerCase()}`}
+                          >
+                            <skill.icon
+                              className="w-8 h-8"
+                              style={{ color: skill.color }}
+                            />
+                            <span className="text-sm font-medium">
+                              {skill.name}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
+                </Card>
+              </div>
+            )}
 
-                  <div>
-                    <h4 className="text-lg font-semibold mb-4 text-muted-foreground">
-                      Frameworks & Libraries
-                    </h4>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                      {[
-                        { name: "React", icon: SiReact, color: "#61DAFB" },
-                        {
-                          name: "Node.js",
-                          icon: SiNodedotjs,
-                          color: "#339933",
-                        },
-                        {
-                          name: "Next.js",
-                          icon: SiNextdotjs,
-                          color: "#000000",
-                        },
-                        { name: "Django", icon: SiDjango, color: "#092E20" },
-                        { name: "Express", icon: SiExpress, color: "#000000" },
-                        {
-                          name: "Tailwind",
-                          icon: SiTailwindcss,
-                          color: "#06B6D4",
-                        },
-                      ].map((skill) => (
-                        <div
-                          key={skill.name}
-                          className="flex flex-col items-center gap-3 p-4 rounded-lg hover-elevate transition-all duration-200 bg-muted/30"
-                          data-testid={`skill-framework-${skill.name
-                            .toLowerCase()
-                            .replace(/\./g, "-")}`}
-                        >
-                          <skill.icon
-                            className="w-8 h-8"
-                            style={{ color: skill.color }}
-                          />
-                          <span className="text-sm font-medium">
-                            {skill.name}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
+            {activeSkillCategory === "ai" && (
+              <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <Card className="p-8 glass border-primary/10">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                    {[
+                      { name: "OpenAI", icon: SiOpenai, color: "#412991" },
+                      { name: "LangChain", icon: SiLangchain, color: "#1C3C3C" },
+                      {
+                        name: "Vector Databases",
+                        icon: FaVectorSquare,
+                        color: "#1C3C3C",
+                      },
+                      {
+                        name: "Model Context Protocol",
+                        icon: AiOutlineApi,
+                        color: "#412991",
+                      },
+                      {
+                        name: "AI Agents",
+                        icon: TbRobot,
+                        color: "#412991",
+                      },
+                    ].map((skill) => (
+                      <div
+                        key={skill.name}
+                        className="flex flex-col items-center gap-3 p-4 rounded-lg hover-elevate transition-all duration-200 bg-muted/30 hover:bg-primary/10 border border-transparent hover:border-primary/20"
+                        data-testid={`skill-ai-${skill.name.toLowerCase()}`}
+                      >
+                        <skill.icon
+                          className="w-10 h-10"
+                          style={{ color: skill.color }}
+                        />
+                        <span className="text-sm font-medium text-center">
+                          {skill.name}
+                        </span>
+                      </div>
+                    ))}
                   </div>
-
-                  <div>
-                    <h4 className="text-lg font-semibold mb-4 text-muted-foreground">
-                      Databases & APIs
-                    </h4>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                      {[
-                        {
-                          name: "PostgreSQL",
-                          icon: SiPostgresql,
-                          color: "#4169E1",
-                        },
-                        { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
-                        { name: "Redis", icon: SiRedis, color: "#DC382D" },
-                        { name: "GraphQL", icon: SiGraphql, color: "#E10098" },
-                        { name: "Prisma", icon: SiPrisma, color: "#2D3748" },
-                      ].map((skill) => (
-                        <div
-                          key={skill.name}
-                          className="flex flex-col items-center gap-3 p-4 rounded-lg hover-elevate transition-all duration-200 bg-muted/30"
-                          data-testid={`skill-db-${skill.name.toLowerCase()}`}
-                        >
-                          <skill.icon
-                            className="w-8 h-8"
-                            style={{ color: skill.color }}
-                          />
-                          <span className="text-sm font-medium">
-                            {skill.name}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
+                  <div className="mt-8 p-6 rounded-lg bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20">
+                    <p className="text-center text-muted-foreground">
+                      Currently exploring{" "}
+                      <strong className="text-foreground">
+                        RAG architectures
+                      </strong>
+                      , <strong className="text-foreground">AI agents</strong>,
+                      and{" "}
+                      <strong className="text-foreground">LLM fine-tuning</strong>{" "}
+                      for production applications
+                    </p>
                   </div>
-                </div>
-              </Card>
-            </TabsContent>
-
-            <TabsContent value="ai" className="mt-0">
-              <Card className="p-8">
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                  {[
-                    { name: "OpenAI", icon: SiOpenai, color: "#412991" },
-                    { name: "LangChain", icon: SiLangchain, color: "#1C3C3C" },
-                    {
-                      name: "Vector Databases",
-                      icon: FaVectorSquare,
-                      color: "#1C3C3C",
-                    },
-                    {
-                      name: "Model Context Protocol",
-                      icon: AiOutlineApi,
-                      color: "#412991",
-                    },
-                    {
-                      name: "AI Agents",
-                      icon: TbRobot,
-                      color: "#412991",
-                    },
-                  ].map((skill) => (
-                    <div
-                      key={skill.name}
-                      className="flex flex-col items-center gap-3 p-4 rounded-lg hover-elevate transition-all duration-200 bg-muted/30"
-                      data-testid={`skill-ai-${skill.name.toLowerCase()}`}
-                    >
-                      <skill.icon
-                        className="w-10 h-10"
-                        style={{ color: skill.color }}
-                      />
-                      <span className="text-sm font-medium text-center">
-                        {skill.name}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-8 p-6 rounded-lg bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20">
-                  <p className="text-center text-muted-foreground">
-                    Currently exploring{" "}
-                    <strong className="text-foreground">
-                      RAG architectures
-                    </strong>
-                    , <strong className="text-foreground">AI agents</strong>,
-                    and{" "}
-                    <strong className="text-foreground">LLM fine-tuning</strong>{" "}
-                    for production applications
-                  </p>
-                </div>
-              </Card>
-            </TabsContent>
-          </Tabs>
+                </Card>
+              </div>
+            )}
+          </div>
         </div>
       </section>
 
       <section
         ref={leadershipAnim.ref}
-        className={`py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-muted/30 transition-all duration-1000 ${
-          leadershipAnim.isVisible
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-8"
-        }`}
+        className={`py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-muted/30 transition-all duration-1000 ${leadershipAnim.isVisible
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-8"
+          }`}
       >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -1206,11 +1201,10 @@ export default function Home() {
       <section
         id="contact"
         ref={contactAnim.ref}
-        className={`py-20 md:py-32 px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${
-          contactAnim.isVisible
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-8"
-        }`}
+        className={`py-20 md:py-32 px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${contactAnim.isVisible
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-8"
+          }`}
       >
         <div className="max-w-4xl mx-auto text-center">
           <h2
